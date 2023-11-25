@@ -13,6 +13,7 @@ export const contactAddSchema = Joi.object({
     "any.required": "Missing required phone field",
     "string.base": "Phone must be text",
   }),
+  favorite: Joi.boolean(),
 });
 
 export const contactUpdateSchema = Joi.object({
@@ -24,5 +25,13 @@ export const contactUpdateSchema = Joi.object({
   }),
   phone: Joi.string().messages({
     "string.base": "Phone must be text",
+  }),
+  favorite: Joi.boolean(),
+});
+
+export const contactFavoriteSchema = Joi.object({
+  favorite: Joi.boolean().required().messages({
+    "any.required": "Missing required field favorite",
+    "boolean.base": "Favorite must be boolean type",
   }),
 });
