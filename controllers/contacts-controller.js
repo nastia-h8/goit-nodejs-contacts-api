@@ -12,7 +12,7 @@ const getAllContacts = async (req, res, next) => {
   const result = await Contact.find(filter, "-createdAt -updatedAt", {
     skip,
     limit,
-  }).populate("owner", "username email");
+  }).populate("owner", "email subscription");
   res.json(result);
 };
 

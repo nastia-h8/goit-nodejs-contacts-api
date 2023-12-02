@@ -74,8 +74,8 @@ const subscription = async (req, res) => {
   if (!result) {
     throw HttpError(404, "Not found");
   }
-
-  res.json(result);
+  const { email, subscription } = result;
+  res.json({ email, subscription });
 };
 
 export default {

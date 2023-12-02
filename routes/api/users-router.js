@@ -6,6 +6,7 @@ import { validateBody } from "../../decorators/index.js";
 import {
   userLoginSchema,
   userRegisterSchema,
+  userSubscriptionSchema,
 } from "../../schemas/users-schemas.js";
 
 const usersRouter = express.Router();
@@ -26,6 +27,12 @@ usersRouter.post(
 
 usersRouter.get("/current", authenticate, authController.getCurrent);
 usersRouter.post("/logout", authenticate, authController.logout);
-usersRouter.patch("/subscription", authenticate, authController.subscription);
+usersRouter.patch(
+  "/subscription",
+  authenticate,
+  isEmptyBody,
+  validateBody(userSubscriptionSchema),
+  authController.subscription
+);
 
 export default usersRouter;

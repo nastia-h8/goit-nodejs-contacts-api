@@ -25,3 +25,13 @@ export const userLoginSchema = Joi.object({
     "string.base": "Password must be text",
   }),
 });
+
+export const userSubscriptionSchema = Joi.object({
+  subscription: Joi.string()
+    .required()
+    .valid("starter", "pro", "business")
+    .messages({
+      "any.required": "Missing required field subscription",
+      "string.base": "Unknown subscription type",
+    }),
+});
