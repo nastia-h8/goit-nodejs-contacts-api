@@ -5,6 +5,7 @@ export const userRegisterSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required().messages({
     "any.required": "Missing required email field",
     "string.base": "Email must be text",
+    "string.pattern.base": "Entered email is not valid",
   }),
   password: Joi.string().min(6).required().messages({
     "any.required": "Missing required password field",
@@ -17,6 +18,7 @@ export const userLoginSchema = Joi.object({
   email: Joi.string().pattern(emailRegex).required().messages({
     "any.required": "Missing required email field",
     "string.base": "Email must be text",
+    "string.pattern.base": "Entered email is not valid",
   }),
   password: Joi.string().min(6).required().messages({
     "any.required": "Missing required password field",
